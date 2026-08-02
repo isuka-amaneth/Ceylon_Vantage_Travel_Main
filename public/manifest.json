@@ -1,0 +1,17 @@
+{
+  "name": "Ceylon Vantage — Sri Lanka Private Travel",
+  "short_name": "Ceylon Vantage",
+  "description": "Custom itineraries and private chauffeur-guided travel across Sri Lanka.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#13332e",
+  "theme_color": "#13332e",
+  "icons": [
+    {
+      "src": "/images/logo/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

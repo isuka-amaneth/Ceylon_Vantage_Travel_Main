@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  /* Ceylon Vantage design tokens */
+  --ink-teal: #13332e;      /* primary -- deep hill-country dusk */
+  --ink-teal-deep: #0b201c; /* darker variant for depth/shadow */
+  --vantage-gold: #b8873a;  /* accent -- brass survey-marker gold, used sparingly */
+  --vantage-gold-soft: #d9b876;
+  --warm-stone: #ede6d6;    /* section background -- muted stone, not cliche cream */
+  --soft-white: #faf7f0;    /* card background */
+  --ink-charcoal: #201d1a;  /* body text */
+  --ink-charcoal-soft: #4a453e;
+  --line-hairline: #d8cdb4;
+}
+
+@theme inline {
+  --color-ink-teal: var(--ink-teal);
+  --color-ink-teal-deep: var(--ink-teal-deep);
+  --color-vantage-gold: var(--vantage-gold);
+  --color-vantage-gold-soft: var(--vantage-gold-soft);
+  --color-warm-stone: var(--warm-stone);
+  --color-soft-white: var(--soft-white);
+  --color-ink-charcoal: var(--ink-charcoal);
+  --color-ink-charcoal-soft: var(--ink-charcoal-soft);
+  --color-line-hairline: var(--line-hairline);
+
+  /* Single site-wide typeface. Every text role below points at the same
+     family so the whole page reads as one consistent font -- hierarchy
+     comes from weight, size, spacing, and color instead of mixing
+     unrelated typefaces. */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: "Fraunces", ui-serif, Georgia, serif;
+}
+
+body {
+  background: var(--warm-stone);
+  color: var(--ink-charcoal);
+  font-family: var(--font-body), serif;
+  font-optical-sizing: auto;
+}
+
+/* Buttons, inputs, and form fields don't inherit the body font by default
+   in most browsers -- they fall back to the OS UI font instead, which is
+   what was making type feel inconsistent across the site. Forcing
+   inheritance here keeps every interactive element on the same single
+   typeface as the rest of the page. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono), serif;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--vantage-gold);
+}
+
+.hairline {
+  border-color: var(--line-hairline);
+}
+
+/* Shared card treatment: rounded corners, a visible boundary, and a soft
+   lift and shadow on hover so cards read as distinct cards on ANY section
+   background -- not just ones that happen to contrast with the card's own
+   background -- and feel tactile without being gimmicky. */
+.card-pop {
+  border-radius: 1rem;
+  border: 1px solid var(--line-hairline);
+  box-shadow: 0 1px 2px rgba(11, 32, 28, 0.06), 0 8px 20px -16px rgba(11, 32, 28, 0.2);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-pop:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 40px -18px rgba(11, 32, 28, 0.35);
+  border-color: var(--vantage-gold-soft);
+  z-index: 10;
+}
+
+:focus-visible {
+  outline: 2px solid var(--vantage-gold);
+  outline-offset: 3px;
+}
+
+/* ---- Liquid-glass dock (Hero social/contact rail) ---- */
+.liquid-glass {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 8px 32px -12px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.liquid-glass-pill {
+  background: rgba(11, 32, 28, 0.35);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 2.8s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
