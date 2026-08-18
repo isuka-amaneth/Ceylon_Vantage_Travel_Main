@@ -56,7 +56,7 @@ export default function RootLayout({
     },
     sameAs: [
       "https://www.instagram.com/ceylon_vantage/",
-      "https://www.facebook.com/share/19HtDb8pSR/",
+      "https://web.facebook.com/profile.php?id=61592832817349",
       "https://www.tripadvisor.com/Attraction_Review-g665217-d34554874-Reviews-Ceylon_Vantage-Sri_Jayawardenepura_Western_Province.html",
     ],
     areaServed: "Sri Lanka",
